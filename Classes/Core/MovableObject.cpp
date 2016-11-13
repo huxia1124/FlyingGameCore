@@ -21,6 +21,14 @@ double MovableObject::GetDistanceFromLastRoutePoint(double x, double y)
 	return 0.0;
 }
 
+std::shared_ptr<MovableObject> MovableObject::CreateObject(TaskObjectConfig *config)
+{
+	auto obj = std::make_shared<MovableObject>();
+	obj->SetPosition(config->GetInitialX(), config->GetInitialY());
+
+	return obj;
+}
+
 void MovableObject::SetFinalTarget(std::shared_ptr<RoutePoint> targetPoint)
 {
 	_target = targetPoint;
@@ -42,6 +50,9 @@ void MovableObject::SetTarget(std::shared_ptr<RoutePoint> targetPoint)
 
 void MovableObject::Step(double units)
 {
+	if (_currentRoute == nullptr)
+		return;
+
 	//if (_moveStepsLeft > 0.1)
 	{
 		double oldX = _x;

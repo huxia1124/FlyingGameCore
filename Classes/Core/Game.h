@@ -8,6 +8,18 @@
 #include "GameCallback.h"
 #include "TaskConfig.h"
 
+//////////////////////////////////////////////////////////////////////////
+// The game management class for a single task
+//
+//
+//  Typical calling sequence:
+//		SetCallback
+//		Initialize
+//		Start
+//		Step
+//
+//
+
 class Game
 {
 public:
@@ -19,7 +31,7 @@ protected:
 	std::chrono::time_point<std::chrono::system_clock> _startTime;
 
 	long long _designedFPS = 60;
-	double _designedUnitpms = 1000000 / 60.0;
+	double _designedUnitpms = 1000000 / 60.0;		//designed units of moving per millisecond
 
 	std::shared_ptr<RoutePoint> _finalTarget;
 	std::shared_ptr<MovableObject> _playerObject;
@@ -33,7 +45,8 @@ public:
 	void SetFinalTarget(double x, double y);
 	void Start();
 	void Step();
-	void AddMovableObject();
+
+	void AddMovableObject(std::shared_ptr<MovableObject> obj);
 	void AddPlayerObject(double x, double y);
 	void GetPlayerLocation(double &x, double &y);
 	void AddRoutePoint(double x, double y);

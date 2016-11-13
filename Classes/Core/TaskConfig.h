@@ -4,6 +4,11 @@
 #include <memory>
 #include "TaskObjectConfig.h"
 
+//////////////////////////////////////////////////////////////////////////
+// TaskConfig - Configuration of a single task
+//
+
+
 class TaskConfig
 {
 	friend class Game;

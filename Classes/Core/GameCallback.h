@@ -11,6 +11,7 @@ struct IGameCallback
 	virtual void OnObjectLocationChanged(GameObject *obj) {};
 	virtual void OnDestinationSetup(double x, double y, double radius) {};
 	virtual void OnPlayerSetup(double x, double y) {};
+	virtual void OnObjectSetup(GameObject *obj) {};
 
 };
 

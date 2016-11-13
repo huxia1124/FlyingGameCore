@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 #include <deque>
+#include "TaskObjectConfig.h"
 
 class MovableObject : public GameObject
 {
@@ -30,6 +31,9 @@ protected:
 
 public:
 	virtual double GetDistanceFromLastRoutePoint(double x, double y);
+
+public:
+	static std::shared_ptr<MovableObject> CreateObject(TaskObjectConfig *config);
 
 public:
 	void SetFinalTarget(std::shared_ptr<RoutePoint> targetPoint);

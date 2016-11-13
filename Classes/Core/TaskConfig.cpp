@@ -7,6 +7,25 @@
 #include <iostream>
 #include <fstream>
 
+//////////////////////////////////////////////////////////////////////////
+// Sample JSON configuration
+//
+// {
+//	"mapWidth" : 640,
+//	"mapHeight" : 480,
+//	"startX" : 0,
+//	"startY" : 0,
+//	"targetX" : 300,
+//	"targetX" : 450,
+//	"targetRadius" : 4.0,
+//	"objectConfig" : [{
+//		"initialX" : 200,
+//		"initialY" : 160,
+//		"radius" : 2.0
+//		}]
+//	}
+//
+//
 
 void TaskConfig::LoadFromJson(const char* jsonFile)
 {

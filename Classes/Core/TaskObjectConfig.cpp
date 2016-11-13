@@ -17,3 +17,13 @@ void TaskObjectConfig::ParseConfig(rapidjson::Value &value)
 
 
 }
+
+double TaskObjectConfig::GetInitialX() const
+{
+	return _initialX;
+}
+
+double TaskObjectConfig::GetInitialY() const
+{
+	return _initialY;
+}

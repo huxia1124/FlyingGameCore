@@ -17,5 +17,9 @@ protected:
 
 public:
 	void ParseConfig(rapidjson::Value &value);
+
+public:
+	double GetInitialX() const;
+	double GetInitialY() const;
 };
 

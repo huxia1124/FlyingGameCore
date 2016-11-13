@@ -33,7 +33,7 @@ void Game::Step()
 	auto now = std::chrono::system_clock::now();
 	auto now_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
 	auto epoch = now_ms.time_since_epoch();
-	auto value = std::chrono::duration_cast<std::chrono::milliseconds>(epoch);
+	auto epochms = std::chrono::duration_cast<std::chrono::milliseconds>(epoch);
 	auto elapsed = now - _startTime;
 	auto elapsed_ms = std::chrono::duration_cast<std::chrono::microseconds>(elapsed);
 	auto elapsedUnit = elapsed_ms.count();
@@ -44,6 +44,11 @@ void Game::Step()
 	{
 		obj->Step(moveUnit);
 	}
+}
+
+void Game::AddMovableObject(std::shared_ptr<MovableObject> obj)
+{
+	_movableObjects.push_back(obj);
 }
 
 void Game::AddPlayerObject(double x, double y)
@@ -90,5 +95,11 @@ void Game::Initialize(TaskConfig *config)
 	if (_callback)
 		_callback->OnPlayerSetup(config->_startX, config->_startY);
 
-
+	for (auto &objConfig : config->_objectConfig)
+	{
+		std::shared_ptr<MovableObject> spObject(MovableObject::CreateObject(objConfig.get()));
+		AddMovableObject(spObject);
+		if (_callback)
+			_callback->OnObjectSetup(spObject.get());
+	}
 }
